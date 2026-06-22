@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách đăng ký</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            Sự Kiện Cộng Nghệ Thông Tin
+        </a>
+
+        <div class="navbar-nav ms-auto">
+
+            <a class="nav-link" href="index.html">
+                Trang chủ
+            </a>
+
+            <a class="nav-link" href="courses.html">
+                Sự kiện
+            </a>
+
+            <a class="nav-link" href="register.html">
+                Đăng ký
+            </a>
+
+            <a class="nav-link active" href="registrations.html">
+                Danh sách đăng ký
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        Danh Sách Đăng Ký
+    </h2>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                    <th>Sự kiện</th>
+                    <th>Xóa</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="registrationTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <button
+        class="btn btn-danger"
+        onclick="clearAll()">
+
+        Xóa tất cả
+
+    </button>
+
+</div>
+
+<script>
+
+function loadData(){
+
+    const registrations =
+    JSON.parse(
+        localStorage.getItem("registrations")
+    ) || [];
+
+    const table =
+    document.getElementById("registrationTable");
+
+    table.innerHTML = "";
+
+    registrations.forEach((item,index)=>{
+
+        table.innerHTML += `
+
+        <tr>
+
+            <td>${item.fullname}</td>
+
+            <td>${item.email}</td>
+
+            <td>${item.phone}</td>
+
+            <td>${item.eventName}</td>
+
+            <td>
+
+                <button
+                    class="btn btn-sm btn-danger"
+                    onclick="deleteItem(${index})">
+
+                    Xóa
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+function deleteItem(index){
+
+    const registrations =
+    JSON.parse(
+        localStorage.getItem("registrations")
+    ) || [];
+
+    registrations.splice(index,1);
+
+    localStorage.setItem(
+        "registrations",
+        JSON.stringify(registrations)
+    );
+
+    loadData();
+
+}
+
+function clearAll(){
+
+    if(confirm("Bạn có chắc muốn xóa tất cả?")){
+
+        localStorage.removeItem(
+            "registrations"
+        );
+
+        loadData();
+
+    }
+
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
