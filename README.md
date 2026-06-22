@@ -101,8 +101,8 @@ Sử dụng Live Server trong Visual Studio Code:
 
 ## 8. Link GitHub
 
-* GitHub Pages:`https://github.com/HaiDuy2005/test-github`
-* GitHub Repo:`https://github.com/HaiDuy2005/Nguyen-Hai-Duy-24210501007-242101TH001`
+* GitHub Pages:`https://haiduy2005.github.io/web-midterm-24210501007-NguyenHaiDuy/`
+* GitHub Repo:`https://github.com/HaiDuy2005/web-midterm-24210501007-NguyenHaiDuy`
 ---
 
 ## 9. Trạng thái hoàn thành
